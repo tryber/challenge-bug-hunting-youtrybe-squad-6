@@ -1,5 +1,5 @@
 let YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
-const YOUTUBE_AUTH_KEY = 'ADD_YOUR_KEY';
+const YOUTUBE_AUTH_KEY = process.env.REACT_APP_API_KEY;
 
 export const searchVideos = (searchText) => {
   const URL = `${YOUTUBE_API_URL}/search?part=snippet&q=${searchText}&maxResults=25&key=${YOUTUBE_AUTH_KEY}`;
