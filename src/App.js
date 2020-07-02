@@ -17,7 +17,6 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path="/" component={InitialPage} />
             <Route
               exact path="/watch/:videoId"
               render={(props) => <VideoPage {...props} />}
@@ -26,7 +25,8 @@ class App extends Component {
               exact path="/results/:searchParam"
               render={(props) => <SearchResult {...props} />}
             />
-            <Route path="/" componente={NotFound} />
+            <Route exact path="/" component={InitialPage} />
+            <Route componente={NotFound} />
           </Switch>
         </div>
       </Router>
