@@ -36,7 +36,7 @@ class VideoPage extends Component {
 
     getVideoComments(this.state.videoId)
       .then((data) => this.setState({ videoComments: data.items }));
-    this.props.history.push(`/watch/${videoId}`);
+    this.props.history.push(`/watch/${videoId}`, { data: this.state.relatedVideos });
   }
 
   render() {
