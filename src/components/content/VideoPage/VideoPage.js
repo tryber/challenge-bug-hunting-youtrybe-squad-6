@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer/VideoPlayer';
 import VideoPlayerDescription from './VideoPlayer/VideoPlayerDescription';
 import VideoPlayerInfo from './VideoPlayer/VideoPlayerInfo';
@@ -68,4 +69,4 @@ class VideoPage extends Component {
   }
 }
 
-export default VideoPage;
+export default withRouter(VideoPage);
