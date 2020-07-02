@@ -12,8 +12,8 @@ class SearchBar extends Component {
     };
 	}
 
-  handleSearchInput({ target: { name } }) {
-    this.setState({ searchInput: name });
+  handleSearchInput({ target: { value } }) {
+    this.setState({ searchInput: value });
   }
 
   render() {
