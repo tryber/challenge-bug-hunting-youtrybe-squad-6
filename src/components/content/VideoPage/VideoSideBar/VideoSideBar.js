@@ -7,7 +7,7 @@ import '../../../../css/sideBar.css';
 class VideoSideBar extends Component {
   render() {
     const { relatedVideos, handleSelectedVideo } = this.props;
-    if (!relatedVideos) return []
+    if (!relatedVideos) return [];
     return (
       <Fragment>
         {relatedVideos.map((video) => (
