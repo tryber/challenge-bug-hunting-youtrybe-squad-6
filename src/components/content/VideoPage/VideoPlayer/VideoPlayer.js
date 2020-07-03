@@ -8,8 +8,16 @@ class VideoPlayer extends Component {
     const playerURL = `https://www.youtube.com/embed/${embedId}`;
     return (
       <div className="youtube-player">
-        <iframe width="100%" height="470" src={playerURL} frameBorder="0" data-testid="videoplayer" title={embedId}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe
+          width="100%"
+          height="470"
+          src={playerURL}
+          frameBorder="0"
+          data-testid="videoplayer"
+          title={embedId}
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     );
   }
