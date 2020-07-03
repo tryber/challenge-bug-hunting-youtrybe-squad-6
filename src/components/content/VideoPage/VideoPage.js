@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import VideoPlayer from './VideoPlayer/VideoPlayer';
-import VideoPlayerDescription from './VideoPlayer/VideoPlayerDescription';
-import VideoPlayerInfo from './VideoPlayer/VideoPlayerInfo';
-import VideoPlayerComments from './VideoPlayerComments/VideoPlayerComments';
-import VideoSideBar from './VideoSideBar/VideoSideBar';
-import { getVideoInfo, getVideoComments } from './../../../api/service';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import VideoPlayer from "./VideoPlayer/VideoPlayer";
+import VideoPlayerDescription from "./VideoPlayer/VideoPlayerDescription";
+import VideoPlayerInfo from "./VideoPlayer/VideoPlayerInfo";
+import VideoPlayerComments from "./VideoPlayerComments/VideoPlayerComments";
+import VideoSideBar from "./VideoSideBar/VideoSideBar";
+import { getVideoInfo, getVideoComments, getRelatedVideo } from "./../../../api/service";
 
 class VideoPage extends Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.state = {
       videoId: this.props.match.params.videoId,
       relatedVideos: this.props.location.state.data,
@@ -26,18 +26,18 @@ class VideoPage extends Component {
     getVideoInfo(this.state.videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
 
     getVideoComments(this.state.videoId).then((data) =>
-      this.setState({ videoComments: data.items }),
+      this.setState({ videoComments: data.items })
     );
   }
 
   handleSelectedVideo(videoId) {
-    this.setState({ videoId: videoId });
-    getVideoInfo(this.state.videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
+    getVideoInfo(videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
 
-    getVideoComments(this.state.videoId).then((data) =>
-      this.setState({ videoComments: data.items }),
-    );
-    this.setState({ shouldRedirect: true });
+    getVideoComments(videoId).then((data) => this.setState({ videoComments: data.items }));
+
+    this.setState({ videoId: videoId, shouldRedirect: true });
+
+    getRelatedVideo(videoId).then((resolve) => this.setState({ relatedVideos: resolve.items }));
   }
 
   render() {

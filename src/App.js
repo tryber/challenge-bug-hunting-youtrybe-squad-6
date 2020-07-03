@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 import './css/mainContents.css';
@@ -13,23 +13,23 @@ import InitialPage from './components/content/InitialPage';
 class App extends Component {
   render() {
     return (
-      <Router> 
+      <BrowserRouter> 
         <div className="App">
           <Header />
           <Switch>
+            <Route exact path="/" component={InitialPage} />
             <Route
-              exact path="/watch/:videoId"
+              path="/watch/:videoId"
               render={(props) => <VideoPage {...props} />}
             />
             <Route
-              exact path="/results/:searchParam"
+              path="/results/:searchParam"
               render={(props) => <SearchResult {...props} />}
             />
-            <Route exact path="/" component={InitialPage} />
-            <Route componente={NotFound} />
+            <Route path='/' componente={NotFound} />
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 };
