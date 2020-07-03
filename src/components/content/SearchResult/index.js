@@ -22,7 +22,7 @@ class SearchResult extends Component {
 
     searchVideos(searchParam)
       .then((data) => {
-        this.setState({ data: data.items.slice(0, 24) });
+        this.setState({ data: data.items.slice(0, 24) }); // porque não funciona limitar a quantidade direto na requisição?
       })
       .catch((error) => this.setState({ error: error }));
   }
