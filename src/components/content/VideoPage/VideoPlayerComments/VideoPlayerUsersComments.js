@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import profileIcon from './../../../../assets/profile.jpg'
+// import profileIcon from './../../../../assets/profile.jpg'
 
 class VideoPlayerUsersComments extends Component {
 
@@ -36,17 +36,17 @@ class VideoPlayerUsersComments extends Component {
                 </h3>
                 <p>{comment.snippet.topLevelComment.snippet.textDisplay}</p>
                 <div>
-                  <a className="thumb-up-btn">
+                  <div className="thumb-up-btn">
                     <i className="material-icons">thumb_up</i>
                     <span className="thumbs-count">
                       {comment.snippet.topLevelComment.snippet.likeCount}
                     </span>
-                  </a>
-                  <a className="thumb-up-btn">
+                  </div>
+                  <div className="thumb-up-btn">
                     <i className="material-icons">thumb_down</i>
                     <span className="thumbs-count"></span>
-                  </a>
-                  <a>REPLY</a>
+                  </div>
+                  <div>REPLY</div>
                 </div>
               </div>
             </div>
