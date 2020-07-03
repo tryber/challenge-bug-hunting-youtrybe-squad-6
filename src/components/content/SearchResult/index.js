@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import VideoCard from './VideoCard/VideoCard';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import VideoCard from "./VideoCard/VideoCard";
+import { Link } from "react-router-dom";
 
-import '../../../css/sideBar.css';
-import { searchVideos } from '../../../api/service';
+import "../../../css/sideBar.css";
+import { searchVideos } from "../../../api/service";
 
 class SearchResult extends Component {
   constructor(props) {
@@ -11,14 +11,12 @@ class SearchResult extends Component {
 
     this.state = {
       data: [],
-      error: '',
+      error: "",
     };
   }
 
   componentDidMount() {
-    const {
-      params: { searchParam },
-    } = this.props.match;
+    const { searchParam } = this.props.match.params;
 
     searchVideos(searchParam)
       .then((data) => {
@@ -29,21 +27,20 @@ class SearchResult extends Component {
 
   render() {
     const { data } = this.state;
-
     if (data.length < 1) return <div>Loading...</div>;
 
     return (
       <div>
-        {data.map((item) => (
+        {data.map((item, index) => (
           <Link
             className="thumbnail-card"
-            key={item.etag}
+            key={index}
             to={{
               pathname: `/watch/${item.id.videoId}`,
               state: { data: data },
             }}
           >
-            <VideoCard video={item} />
+            <VideoCard key={index} video={item} />
           </Link>
         ))}
       </div>

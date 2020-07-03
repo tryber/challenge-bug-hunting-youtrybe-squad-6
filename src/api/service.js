@@ -1,4 +1,4 @@
-let YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
+let YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3";
 
 const YOUTUBE_AUTH_KEY = process.env.REACT_APP_API_KEY;
 
@@ -8,7 +8,7 @@ export const searchVideos = (searchText) => {
     fetch(URL)
       .then((data) => data.json())
       .then((result) => resolve(result))
-      .catch(error => reject(error))
+      .catch((error) => reject(error));
   });
 };
 
@@ -19,7 +19,7 @@ export const getVideoInfo = (videoId) => {
     fetch(URL)
       .then((data) => data.json())
       .then((result) => resolve(result))
-      .catch(error => reject(error))
+      .catch((error) => reject(error));
   });
 };
 
@@ -30,6 +30,16 @@ export const getVideoComments = (videoId) => {
     fetch(URL)
       .then((data) => data.json())
       .then((result) => resolve(result))
-      .catch(error => reject(error))
+      .catch((error) => reject(error));
+  });
+};
+
+export const getRelatedVideo = (videoId) => {
+  const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&maxResults=25&key=${YOUTUBE_AUTH_KEY}`;
+  return new Promise((resolve, reject) => {
+    fetch(URL)
+      .then((data) => data.json())
+      .then((results) => resolve(results))
+      .catch((error) => reject(error));
   });
 };

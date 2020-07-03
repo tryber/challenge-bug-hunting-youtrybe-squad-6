@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
+import '../../../css/initialPage.css';
+
 class NotFound extends Component {
-  // Pode ser um bug
   render() {
-    return <div>Página não encontrada</div>
+    return (
+      <h1 className="title">Página não encontrada!</h1>
+    )
   }
 }
 
